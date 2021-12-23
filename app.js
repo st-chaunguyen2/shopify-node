@@ -3,11 +3,9 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 const Env = process.env;
-const postRoute = require('./routes/post')
-const authRoute = require('./routes/auth')
 const productRoute = require('./routes/product')
+const collectionRoute = require('./routes/collection')
 const cors = require('cors');
-
 
 //CORS Middleware
 app.use(cors());
@@ -27,10 +25,8 @@ http.listen(Env.PORT, () => {
 
 const routePrefix = '/api/v1'
 
-// app.use(`${routePrefix}/auth`, authRoute)
-// app.use(`${routePrefix}/posts`, postRoute)
-
 app.use(`${routePrefix}/products`, productRoute)
+app.use(`${routePrefix}/collections`, collectionRoute)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
